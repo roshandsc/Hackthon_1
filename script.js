@@ -165,10 +165,14 @@ async function sendMessage() {
   input.value = '';
   autoResize(input);
   addUserMessage(text);
-  showThinking();
+  // Determine if running locally or on Vercel
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const API_BASE_URL = isLocal 
+    ? 'http://localhost:8000' 
+    : 'https://INSERT_YOUR_VERCEL_BACKEND_URL_HERE'; // The user must replace this!
 
   try {
-    const response = await fetch('http://localhost:8000/api/chat', {
+    const response = await fetch(`${API_BASE_URL}/api/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
