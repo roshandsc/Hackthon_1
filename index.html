@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Digital Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+<div class="glow-orb a"></div>
+<div class="glow-orb b"></div>
+
+<div class="app">
+  <!-- SIDEBAR OVERLAY FOR MOBILE -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="appSidebar">
+    <div class="sidebar-header-mobile">
+      <div class="logo">
+        <div class="logo-badge">🏛️</div>
+        <div class="logo-name">GOV<span>ASST</span></div>
+      </div>
+      <button class="close-btn" onclick="toggleSidebar()">✕</button>
+    </div>
+
+    <div style="padding:0 16px;margin-bottom:20px;">
+      <div style="background:linear-gradient(135deg,rgba(0,212,255,0.12),rgba(0,212,255,0.04));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:14px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Citizen ID</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text);">MANTHAN</div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);margin-top:2px;">CIT-2024-847391</div>
+        <div style="margin-top:10px;display:flex;gap:8px;">
+          <div style="flex:1;background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.2);border-radius:6px;padding:5px 8px;text-align:center;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;">Tax Status</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--green);">Compliant</div>
+          </div>
+          <div style="flex:1;background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.2);border-radius:6px;padding:5px 8px;text-align:center;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;">Open Cases</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--gold);">3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">SERVICES</div>
+    <div class="sidebar-section">
+      <div class="nav-item active" onclick="setActive(this)">
+        <span class="nav-icon">💬</span> AI Assistant
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">📋</span> My Applications
+        <span class="nav-badge">3</span>
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">💰</span> Tax Services
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">🏥</span> Social Benefits
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">⚖️</span> Legal Processes
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">🏢</span> Business Compliance
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">📄</span> Documents
+      </div>
+    </div>
+
+    <div class="sidebar-label">TRACKING</div>
+    <div class="sidebar-section">
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">🔍</span> Track Application
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">📅</span> Appointments
+      </div>
+      <div class="nav-item" onclick="setActive(this)">
+        <span class="nav-icon">🔔</span> Notifications
+        <span class="nav-badge">5</span>
+      </div>
+    </div>
+
+    <div class="quick-stats">
+      <div class="quick-stats-title">ACTIVITY SUMMARY</div>
+      <div class="stat-row">
+        <span class="stat-label">Last Login</span>
+        <span class="stat-value accent">Today, 09:14</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Tax Year</span>
+        <span class="stat-value">2024–25</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Pending Docs</span>
+        <span class="stat-value gold">2 required</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Refund Status</span>
+        <span class="stat-value green">Processing</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <div class="main-content">
+    <!-- FIXED HEADER -->
+    <header class="app-header">
+      <div class="header-left">
+        <button class="hamburger-btn" onclick="toggleSidebar()" title="Toggle Sidebar">
+          ☰
+        </button>
+        <div class="logo">
+          <div class="logo-name">GOV<span>ASST</span></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="status-pill">
+          <div class="status-dot"></div>
+          SYSTEM ONLINE
+        </div>
+        <div class="icon-btn" title="Notifications" onclick="showNotif()">🔔</div>
+        <div class="user-avatar">M</div>
+      </div>
+    </header>
+
+    <!-- MAIN CHAT -->
+    <main class="chat-area">
+      <div class="chat-header">
+        <div>
+          <div class="chat-title">AI Assistant — Government Services</div>
+          <div class="chat-subtitle">Helping you navigate digital services with ease · Secure &amp; Private</div>
+        </div>
+        <div class="chat-actions">
+          <div class="icon-btn" title="Clear chat" onclick="clearChat()">🗑️</div>
+          <div class="icon-btn" title="Download transcript">⬇️</div>
+          <div class="icon-btn" title="Settings">⚙️</div>
+        </div>
+      </div>
+
+      <div class="messages" id="messages">
+        <!-- WELCOME -->
+        <div class="message" id="welcomeMsg">
+          <div class="msg-avatar ai">🏛️</div>
+          <div class="msg-content">
+            <div class="msg-sender">GOVERNMENT ASSISTANT · SECURE SESSION</div>
+            <div class="msg-bubble ai">
+              <div class="welcome-banner">
+                <div class="welcome-icon">🏛️</div>
+                <div class="welcome-title">Welcome back <span>MANTHAN</span></div>
+                <div class="welcome-desc">I'm your AI government services assistant. I can help you navigate tax filings, track applications, access social benefits, handle compliance matters, and much more.</div>
+                <div class="capability-grid">
+                  <div class="cap-card" onclick="sendSuggestion('Check my tax refund status')">
+                    <span class="cap-icon">💰</span>
+                    <div class="cap-title">Tax Services</div>
+                    <div class="cap-desc">File returns, check refunds, manage assessments</div>
+                  </div>
+                  <div class="cap-card" onclick="sendSuggestion('Track my passport application APP-2024-9812')">
+                    <span class="cap-icon">🔍</span>
+                    <div class="cap-title">Track Applications</div>
+                    <div class="cap-desc">Real-time status updates on all submissions</div>
+                  </div>
+                  <div class="cap-card" onclick="sendSuggestion('What social benefits am I eligible for?')">
+                    <span class="cap-icon">🏥</span>
+                    <div class="cap-title">Social Benefits</div>
+                    <div class="cap-desc">Eligibility checks, claims, and payments</div>
+                  </div>
+                  <div class="cap-card" onclick="sendSuggestion('Show me my pending documents and deadlines')">
+                    <span class="cap-icon">📋</span>
+                    <div class="cap-title">Compliance</div>
+                    <div class="cap-desc">Documents, deadlines, and regulatory filings</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUGGESTIONS -->
+      <div class="suggestions" id="suggestions">
+        <div class="chip" onclick="sendSuggestion(this.textContent)">📊 Check tax refund</div>
+        <div class="chip" onclick="sendSuggestion(this.textContent)">🛂 Track passport application</div>
+        <div class="chip" onclick="sendSuggestion(this.textContent)">🏥 Social benefit eligibility</div>
+        <div class="chip" onclick="sendSuggestion(this.textContent)">📄 Pending documents</div>
+        <div class="chip" onclick="sendSuggestion(this.textContent)">📅 Book appointment</div>
+      </div>
+
+      <!-- INPUT -->
+      <div class="input-area">
+        <div class="input-wrapper">
+          <div class="input-extras">
+            <div class="attach-btn" title="Attach document">📎</div>
+            <div class="attach-btn" title="ID verification">🪪</div>
+          </div>
+          <textarea id="userInput" rows="1" placeholder="Ask anything about government services, applications, taxes, benefits…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" onclick="sendMessage()" title="Send">➤</button>
+        </div>
+        <div class="input-footer">
+          <span class="input-hint">🔒 End-to-end encrypted · Session ID: SES-847391-A</span>
+          <span class="input-hint">Press Enter to send</span>
+        </div>
+        
+        <!-- MINIMAL FOOTER -->
+        <footer class="app-footer">
+          GovAssist AI - Confidential & Secure
+        </footer>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
